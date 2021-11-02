@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block login %}
+<div class="mt-8 sm:mx-auto text-center sm:w-full sm:max-w-md">
+    <div class="bg-white py-8 px-6 shadow rouded-leg sm:px-10">
+        <img src="{% static 'logo.png'%}" width="200" height="00" class="m-auto">
+        <span class="text-4xl">Flamingo</span>
+        <form action="#" class="mb-0 space-y-6">
+
+            <textarea name="post" id=""
+                class=" min-h-34  w-full border h-64 mt-7 border-gray-300 px-3 py-2 rounded-lg shadow-sm"></textarea>
+            <input type="file">
+            <div>
+                <button type="submit"
+                    class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outside-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">sign
+                    up</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock login %}

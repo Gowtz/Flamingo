@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>
+    {{user.first_name}} | Profile | Flamingo
+</title>
+{% endblock title %}
+
+{% block profile %}
+<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-2xl">
+        <div class="bg-white py-8 px-6  flex flex-col items-center justify-between shadow rouded-leg sm:px-10">
+            <div class="py-10 text-center">
+                <img src="{{user.profile.avatar.url}}" alt="{{user.firstname}}_image"
+                    class=" rounded rounded-2xl " height="250" width="250">
+                    <span class="text-2xl p-10">{{user.first_name}}</span>
+            </div>
+
+            <div class="py-1">
+                <a class="px-2 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700" href="{% url 'user:update' %}">Edit Profile </a> &nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="px-2 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700" href="{% url 'user:change_password' %}">Change Password</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock profile %}
+
+{% block main %} 
+
+{% for post in posts %}
+<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-xl">
+    <div class="bg-white  py-8 px-6 shadow-md rouded-leg sm:px-10">
+        <h2>{{post.user.first_name}}</h2>
+        <p>{{post.content}}</p>
+        <img src="{{post.image.url}}" alt="{{post.user.first_name}}_post" style="height: 350px;">
+        <a class="px-2 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-400 hover:bg-indigo-500" href="{% url 'blog:edit' post.id %}">edit</a>
+    <a class="px-2 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700" href="{% url 'blog:delete' post.id %}">delete</a>
+    </div>
+    
+</div>
+{% endfor %}
+
+{% endblock main %}
+
+{% block posSymbol %}
+    <a href="{% url 'blog:new' %}"><i class='bx bxs-pencil text-blue-400 text-6xl  fixed bottom-20 right-10'></i></a>
+{% endblock posSymbol %}

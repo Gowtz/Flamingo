@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    <title>Flamingo</title>
+    {% endblock title %}
+    <link rel="shortcut icon" href="{% static 'favicon.ico'%}" type="image/x-icon">
+    <!-- tailwindcss -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- box icon -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- custom -->
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+</head>
+
+<body>
+
+    <div id="menu" class="relative ">
+
+        <div  class="bg-blue-600 min-h-screen sidebar text-blue-100 w-64 space-y-6 py-5 px-2 absolute inset-y-0 left-0 transform -translate-x-full transition duration-200 ease-in-out">
+            <a href="#" class="flex items-center text-white center space-x-2 px-4">
+                <img src="{% static 'logo.png'%}" height="45" width="45">
+                <span class="text-3xl">Flamingo</span>
+            </a>
+
+
+            <nav>
+                {% if user.is_authenticated %}
+                <a href="{% url 'user:profile' %}" class="block py-2 5 px-4">Profile</a>
+                <a href="{% url 'blog:new' %}" class="block py-2 5 px-4">New Post</a>
+                <a href="{% url 'user:logout' %}" class="block py-2 5 px-4">Logout</a>
+                {% else %}
+                <a href="{% url 'user:register' %}" class="block py-2 5 px-4">Register</a>
+                <a href="{% url 'user:login' %}" class="block py-2 5 px-4">Login</a>
+                {% endif %}
+
+            </nav>
+        </div>
+        <div class="block p-4 py-5 bg-blue-400 font-bold flex justify-between shadow-md ">
+            <a href="{% url 'web:home' %}" class="flex items-center text-white center space-x-2 px-4">
+                <img src="{% static 'logo.png'%}" height="45" width="45">
+                <span class="text-3xl">Flamingo</span>
+            </a>
+           <button class="button "> <i class='bx bx-menu text-center text-white text-3xl px-4'></i></button>
+        </div>
+    </div>
+    <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-2xl">
+        {% for message in messages %}
+        <div class="bg-grey py-2 px-2 shadow-md rouded-leg sm:px-10">
+            <p>{{message}}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="posts">
+    {% block profile %} {% endblock profile %}
+    {% block main %} {% endblock main %}
+    </div>
+{% block posSymbol %}
+
+{% endblock posSymbol %}
+
+
+
+
+
+    <a href="#menu"><i class='bx bx-chevron-up text-white p-2 text-2xl bg-blue-300 fixed bottom-5 right-10 rounded-lg'></i></a>
+    <script src="{% static 'app.js'%}"></script>
+
+
+
+</body>
+</html>

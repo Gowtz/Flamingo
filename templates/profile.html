@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block profile %}
+<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-2xl">
+        <div class="bg-white py-8 px-6  flex flex-col items-center justify-between shadow rouded-leg sm:px-10">
+            <div class="py-10 text-center">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.explicit.bing.net%2Fth%3Fid%3DOIP.2kpgkT6_iR59umGl-vTb4gHaHY%26pid%3DApi&f=1"
+                    class=" rounded rounded-2xl " height="250" width="250">
+                    <span class="text-2xl p-10">@UserName</span>
+            </div>
+            <div class="followers-following p  w-64 flex justify-between items-center">
+                <div class="followers text-2xl flex flex-col items-center">
+                    <span>Followers</span>
+                    <span>1M</span>
+                </div>
+                <div class="following text-2xl flex flex-col items-center">
+                    <span>Following</span>
+                    <span>0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock profile %}
+
+{% block post %}
+
+<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-2xl">
+        <div class="bg-white h-44 py-8 px-6 shadow-md rouded-leg sm:px-10">
+
+            <h2>post user</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas fugit accusamus, beatae ab assumenda
+                ut pariatur mollitia necessitatibus quisquam nisi debitis eveniet illum aut? Rem omnis architecto
+                commodi. Dolore, beatae?</p>
+
+        </div>
+    </div>
+    {% endblock post %}
+
+{% block posSymbol %}
+    <a href="{% url 'posting' %}"><i class='bx bxs-pencil text-blue-400 text-6xl  fixed bottom-20 right-10'></i></a>
+
+{% endblock posSymbol %}

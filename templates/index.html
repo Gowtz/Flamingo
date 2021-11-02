@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block main %}
+{% for post in posts %}
+<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-4xl">
+    <div class="bg-white border-2 py-8 px-6 shadow-md rouded-leg sm:px-10">
+        <h2 class="text-4xl ">{{post.user.first_name}}</h2>
+        <h2 class="text-gray-400 ">{{post.create_date}}</h2>
+        <p class="text-gray-600 text-xl m-2">{{post.content}}</p>
+        <img class="text-center	" src="{{post.image.url}}" alt="{{post.user.first_name}}_post" style="height: 350px;">
+    </div>
+</div>
+{% endfor %}
+
+ <div class=" mt-8 sm:mx-auto  sm:w-full sm:max-w-4xl ">
+{% if posts.has_other_pages %}
+  <nav aria-label="Page navigation conatiner" class="flex justify-evenly"></nav>
+  <ul class="pagination justify-content-center flex sm:w-full justify-evenly py-8">
+    {% if posts.has_previous %}
+    <li><a href="?page={{ posts.previous_page_number }}" class="page-link btn bg-blue-600 text-white px-12 py-4 m-6
+       rounded-lg ">&laquo; PREV </a></li>
+    {% endif %}
+    {% if posts.has_next %}
+    <li><a href="?page={{ posts.next_page_number }}" class="page-link btn bg-blue-600 text-white px-12 py-4 m-6
+      rounded-lg "> NEXT &raquo;</a></li>
+   {% endif %}
+  </ul>
+  </nav>
+</div>
+
+{% endif %}
+{% endblock main %}
+
+{% block posSymbol %}
+{% if user.is_authenticated %}
+<a href="{% url 'blog:new' %}"><i class='bx bxs-pencil text-white p-2 text-2xl bg-blue-300 fixed bottom-20 right-10 rounded-lg'></i></a>
+{% endif %}
+
+{% endblock posSymbol %}

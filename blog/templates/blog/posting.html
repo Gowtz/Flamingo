@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+<div class="mt-8 sm:mx-auto text-center sm:w-full sm:max-w-md">
+    <div class="bg-white py-8 px-6 shadow rouded-leg sm:px-10">
+        <img src="{% static 'logo.png'%}" width="200" height="00" class="m-auto">
+        <span class="text-4xl">Flamingo</span>
+        <form method="POST" enctype="multipart/form-data" class="mb-0 space-y-6">
+            {% csrf_token %}
+            <textarea name="content" required
+                class=" min-h-34  w-full border h-64 mt-7 border-gray-300 px-3 py-2 rounded-lg shadow-sm">{% if form.content.value != None %}{{form.content.value|stringformat:'s' }}{% endif %}</textarea>
+            <input name="image" type="file">
+            <div>
+                <button type="submit"
+                    class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outside-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Submit</button>
+            </div>
+            <!-- <p>{{form.content.value}}</p> -->
+        </form>
+    </div>
+</div>
+{% endblock main %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-xl">
+    <h1 class="center">LogOut</h1>
+    <p>Thanks for spending some quality time with us. <br> If you have loggedout accidently, <a href="{% url 'user:login' %}">login
+        here...</a> </p>
+</div>
+{% endblock main %}
